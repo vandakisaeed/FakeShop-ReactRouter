@@ -1,12 +1,5 @@
 import { useState } from "react";
 
-export function meta() {
-  return [
-    { title: "Fake Shop" },
-    { name: "description", content: "Welcome to React Router!" },
-  ];
-}
-
 export const loader = async () => {
   const res = await fetch(`https://fakestoreapi.com/products`);
   if (!res.ok) {
@@ -20,10 +13,8 @@ export const hydrateFallback = () => {
   return <div>loading ...</div>;
 };
 
-const Home = ({ loaderData }) => {
+const Products = ({ loaderData }) => {
   const [category, setCategory] = useState("all");
-
-  const [count , setcount] = useState(0) 
 
   // filter products
   const filteredProducts =
@@ -70,7 +61,6 @@ const Home = ({ loaderData }) => {
       {/* Products grid */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {filteredProducts.map((el) => (
-          el.id === 
           <div key={el.id} className="card bg-base-100 w-96 shadow-sm">
             <figure className="h-60 flex justify-center">
               <img
@@ -83,7 +73,6 @@ const Home = ({ loaderData }) => {
               <h2 className="card-title">{el.title}</h2>
               <p className="line-clamp-2">{el.description}</p>
               <div className="card-actions justify-end">
-
                 <button className="btn btn-primary">Buy Now</button>
               </div>
             </div>
@@ -94,4 +83,4 @@ const Home = ({ loaderData }) => {
   );
 };
 
-export default Home;
+export default Products;
