@@ -6,5 +6,6 @@ export default [
     route("/about", "routes/about.jsx"),
     route("/contact", "routes/contact.jsx"),
     route("/cart", "routes/cart.jsx"),
+    route("/checkout", "routes/checkout.jsx"),
   ]),
 ];
