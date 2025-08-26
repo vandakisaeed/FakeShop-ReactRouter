@@ -1,4 +1,5 @@
-import { useDemoContext } from "./context/Usecontext";
+import { useDemoContext } from './context/Usecontext';
+
 export function meta() {
   return [
     { title: "Fake Shop" },
@@ -6,29 +7,20 @@ export function meta() {
   ];
 }
 
-export const hydrateFallback = () => {
-  return <div>loading ...</div>;
-};
+export default function Cart() {
+  const {
+    incart,
+    counter,
+    sumPrice,
+    handleFn
+  } = useDemoContext();
 
-const Home = () => {
-  // filters
-  const{category,setCategory,incart,setIncart,counter,setCounter,sumPrice,setSumPrice,filteredProducts,handleFn}=useDemoContext()
+  if (incart.length === 0) {
+    return <div className="p-6 text-xl">Your cart is empty </div>;
+  }
 
   return (
     <div className="p-4">
-      {/* Filter buttons */}
-      <div className="flex gap-4 mb-6">
-        {["all", "men's clothing", "women's clothing", "electronics", "jewelery"].map((cat) => (
-          <button
-            key={cat}
-            className="btn btn-ghost"
-            onClick={() => setCategory(cat)}
-          >
-            {cat === "all" ? "All" : cat}
-          </button>
-        ))}
-      </div>
-
       {/* Cart summary */}
       <div className="mb-6 font-bold">
         Items: {counter} | Total: ${sumPrice}
@@ -36,9 +28,8 @@ const Home = () => {
 
       {/* Products grid */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        {filteredProducts.map((product) => {
-          const item = incart.find((i) => i.id === product.id);
-          const count = item ? item.count : 0;
+        {incart.map((product) => {
+          const count = product.count || 0;
 
           return (
             <div key={product.id} className="card bg-base-100 w-96 shadow-sm">
@@ -85,6 +76,4 @@ const Home = () => {
       </div>
     </div>
   );
-};
-
-export default Home;
+}
