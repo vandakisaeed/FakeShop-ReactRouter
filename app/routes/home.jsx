@@ -1,4 +1,5 @@
 import { useDemoContext } from "./context/Usecontext";
+import { useColorMode } from "./Mode";
 export function meta() {
   return [
     { title: "Fake Shop" },
@@ -13,9 +14,9 @@ export const hydrateFallback = () => {
 const Home = () => {
   // filters
   const{category,setCategory,incart,setIncart,counter,setCounter,sumPrice,setSumPrice,filteredProducts,handleFn}=useDemoContext()
-
+  const { mode, changeMode, backgroundDark, backgroundLight } = useColorMode();
   return (
-    <div className="p-4">
+    <div className="p-4" style={{ backgroundColor: mode ? backgroundDark : backgroundLight }} >
       {/* Filter buttons */}
       <div className="flex gap-4 mb-6">
         {["all", "men's clothing", "women's clothing", "electronics", "jewelery"].map((cat) => (

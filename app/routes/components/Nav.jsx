@@ -1,15 +1,17 @@
 import { Link } from "react-router";
 import {useDemoContext} from '../context/Usecontext'
-
+import { useColorMode } from "../Mode";
 export const Nav= ()=>{
     const{category,setCategory,incart,setIncart,counter,setCounter,sumPrice,setSumPrice,filteredProducts,handleFn}=useDemoContext()
+    const { mode, changeMode, backgroundDark, backgroundLight } = useColorMode();
+
     return(
             <div className="navbar bg-base-100 shadow-sm">
             <div className="flex-1">
                     <Link className="btn btn-ghost text-xl" to="/">Home</Link>
                     <Link className="btn btn-ghost text-xl" to="/about">About</Link>
                     <Link className="btn btn-ghost text-xl" to="/contact">Contact</Link>
-
+                    <button className="btn btn-ghost text-xl" onClick={changeMode}> {mode ? "Dark 🌙" : "Light ☀️"}</button>
             </div>
             <div className="flex-none">
                 <div className="dropdown dropdown-end">
