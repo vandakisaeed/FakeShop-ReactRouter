@@ -1,5 +1,5 @@
 import { useDemoContext } from "./context/Usecontext";
-import { useColorMode } from "./Mode";
+import { useColorMode } from "./context/Mode";
 export function meta() {
   return [
     { title: "Fake Shop" },

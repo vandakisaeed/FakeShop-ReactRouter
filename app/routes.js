@@ -7,5 +7,7 @@ export default [
     route("/contact", "routes/contact.jsx"),
     route("/cart", "routes/cart.jsx"),
     route("/checkout", "routes/checkout.jsx"),
+    route("/profile", "routes/profile.jsx"),
+    route("/tanks", "routes/tanks.jsx"),
   ]),
 ];

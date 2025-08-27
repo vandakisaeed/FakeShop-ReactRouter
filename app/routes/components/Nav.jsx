@@ -1,6 +1,6 @@
 import { Link } from "react-router";
 import {useDemoContext} from '../context/Usecontext'
-import { useColorMode } from "../Mode";
+import { useColorMode } from "../context/Mode";
 export const Nav= ()=>{
     const{category,setCategory,incart,setIncart,counter,setCounter,sumPrice,setSumPrice,filteredProducts,handleFn}=useDemoContext()
     const { mode, changeMode, backgroundDark, backgroundLight } = useColorMode();
@@ -47,10 +47,10 @@ export const Nav= ()=>{
                     tabIndex={0}
                     className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
                     <li>
-                    <a className="justify-between">
+                    <Link className="justify-between" to={'/profile'}>
                         Profile
                         <span className="badge">New</span>
-                    </a>
+                    </Link>
                     </li>
                     <li><a>Settings</a></li>
                     <li><a>Logout</a></li>
